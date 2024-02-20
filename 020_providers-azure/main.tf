@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source = "hashicorp/azurerm"
-      version = "2.77.0"
+      version = "3.92.0"
     }
   }
 }
@@ -31,6 +31,8 @@ module "network" {
   resource_group_name = azurerm_resource_group.terraform_azure_providers.name
   subnet_prefixes     = ["10.0.1.0/24"]
   subnet_names        = ["subnet1"]
+
+  use_for_each = true
 
   depends_on = [azurerm_resource_group.terraform_azure_providers]
 }
